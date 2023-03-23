@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    place-items: center;
+    margin-top: 50px;
+}
+.finishingText{
+    display: flex;
+    justify-content: space-between;
+}
+.cell{
+    height: 60px;
+    width: 60px;
+    background: cadetblue;
+    font-size: 20px;
+}
+.labelShow{
+    visibility: hidden;
+}
+.btndisable{
+    pointer-events: none;
+}

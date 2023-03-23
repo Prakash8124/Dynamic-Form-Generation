@@ -1,0 +1,31 @@
+<div class="container">
+    <div cdkDropListGroup>
+        <div class="example-container" [formGroup]="formGroup1">
+          <h2>To do</h2>
+            <div class="example-list" #todoList="cdkDropList" [cdkDropListData]="formArray1"
+             cdkDropList formArrayName = "formArray1" [cdkDropListConnectedTo]="[doneList]"
+             (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of formArray1.controls;let i = index" cdkDrag>
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Input</mat-label>
+                        <input matInput type="text" [formControlName]="i">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+      
+        <div class="example-container"  [formGroup]="formGroup2">
+          <h2>Done</h2>
+          <div class="example-list" formArrayName = "formArray2" cdkDropList #doneList="cdkDropList"
+          [cdkDropListData]="formArray2" (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="[todoList]">
+            <div class="example-box" *ngFor="let item of formArray2.controls;let i = index" cdkDrag>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Input</mat-label>
+                    <input matInput type="text" [formControlName]="i">
+                </mat-form-field>
+          </div>
+        </div>
+    </div>
+</div>
+  

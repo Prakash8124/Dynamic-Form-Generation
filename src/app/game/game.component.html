@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="game-body">
+        <div class="finishingText">
+            <div *ngIf="this.winORlose.length">{{ this.winORlose == 'lose' ? "Game Over" : this.winORlose == 'win' ? "You Are Won" : ''}}</div>
+            <button *ngIf="this.winORlose.length" (click) = "nextLevel(this.winORlose == 'lose' ? 3 : this.winORlose == 'win' ? sourceArray.length + 1 : 0)">{{ this.winORlose == 'lose' ? "New Game" : this.winORlose == 'win' ? "Next Level" : ''}}</button>
+        </div>
+        <div *ngFor="let row of sourceArray;let i = index">
+            <button *ngFor="let cell of row let j = index" class="cell" #btn (click)="cellCliking($event,cell,i,j)">
+                <label class="labelShow" >{{cell}}</label>
+            </button>
+          </div>
+    </div>
+</div>

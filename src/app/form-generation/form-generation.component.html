@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="dynamic-formControl-container">
+        <h2 appSelectionText>Dynamic Form</h2>
+        <form [formGroup]="formGroup">
+            <div *ngFor="let obj of formData">
+                <ng-container *ngIf="obj.questionType === 'YESNO'">
+                    <mat-label>{{obj.questionText}}</mat-label>
+                    <mat-radio-group [formControlName]="obj.questionText">
+                        <mat-radio-button value="1">Yes</mat-radio-button>
+                        <mat-radio-button value="2">No</mat-radio-button>
+                    </mat-radio-group>
+                </ng-container>
+    
+                <ng-container *ngIf="obj.questionType === 'CHECKBOX'">
+                    <mat-checkbox [formControlName]="obj.questionText">{{obj.questionText}}</mat-checkbox>
+                </ng-container>
+    
+                <ng-container *ngIf="obj.questionType === 'DATE'">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>{{obj.questionText}}</mat-label>
+                        <input matInput [matDatepicker]="picker" [formControlName]="obj.questionText">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </ng-container>
+    
+                <ng-container *ngIf="obj.questionType === 'FIELD' && obj.questionDataType !== 'SHORT'">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>{{obj.questionText}}</mat-label>
+                        <input matInput [formControlName]="obj.questionText">
+                    </mat-form-field>
+                </ng-container>
+    
+                <ng-container *ngIf="obj.questionType === 'FIELD' && obj.questionDataType === 'SHORT'">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>{{obj.questionText}}</mat-label>
+                        <textarea matInput [formControlName]="obj.questionText"></textarea>
+                    </mat-form-field>
+                </ng-container>
+    
+                <ng-container *ngIf="obj.questionType === 'SELECT'">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>{{obj.questionText}}</mat-label>
+                        <mat-select [formControlName]="obj.questionText"
+                            [multiple]="obj.questionDataType === 'MULTI_SELECT'">
+                            <mat-option *ngFor="let data of obj.objOptions"
+                                [value]="data.optionId">{{data.optionItemText}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
+            </div>
+        </form>
+    </div>
+    <!-- <app-drag-drop></app-drag-drop> -->
+    <app-game></app-game>
+</div>

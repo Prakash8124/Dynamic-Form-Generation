@@ -1,0 +1,31 @@
+.container{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.dynamic-formControl-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  mat-form-field {
+    margin-top: 10px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  mat-radio-group {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  mat-radio-button {
+    margin-right: 10px;
+  }
+  
+  .example-margin {
+    margin-right: 10px;
+  }
